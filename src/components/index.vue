@@ -1,14 +1,27 @@
 <template>
-  <div id="index">
-    <div id="left"></div>
-    <div id="right">
-      <p>我叫包明辉
-        <br>前端工程师一枚
-        <br>var_bmh@outlook.com</p>
-    </div>
+<div id="index">
+  <div id="left"></div>
+  <div id="right">
+    <p v-for='item in right'>{{item}}</p>
   </div>
+</div>
 </template>
-<style scope>
+<script>
+  export default{
+    name:'index',
+    data(){
+      return{
+        left:[],
+        right:[
+          '包明辉',
+          '前端工程师',
+          'var_bmh@outlook.com'
+        ]
+      }
+    }
+  }
+</script>
+<style scoped>
 * {
   margin: 0;
   padding: 0;
@@ -27,26 +40,23 @@
 #left {
   display: inline-block;
   height: 40%;
-  width: 30%;
-  clear:
 }
 
 #left {
-  border-right: 3px solid white;
-
+  border-right: 3px solid;
+  width: 30%;
 }
 
 #right {
   font-size: 1.5em;
-  color: white;
+  width: 20%;
+  padding-bottom: 5px;
 }
 
 #right p {
-  padding-top: 17%;
-  margin-left: 3%;
-  float: left;
+  text-indent: 1em;
+  display: block;
   text-align: left;
   line-height: 50px;
 }
-
 </style>

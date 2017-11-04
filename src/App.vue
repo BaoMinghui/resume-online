@@ -2,11 +2,7 @@
 <div id="app">
   <div id="nav">
     <ul @click='eventAgency($event)'>
-      <li><span class="index"></span></li>
-      <li><span class="aboutme"></span></li>
-      <li><span class="skill"></span></li>
-      <li><span class="production"></span></li>
-      <li><span class="contact"></span></li>
+      <li v-for="item in componentsArr" :class="item"></li>
     </ul>
   </div>
   <transition :name="viewValue">
@@ -44,6 +40,7 @@ export default {
     }
   },
 
+
   methods: {
     eventAgency: function(ev) {
       const event = ev || window.event;
@@ -62,7 +59,7 @@ export default {
     window.addEventListener('mousewheel', (event) => {
       if (event.wheelDelta < 0) {
         this.viewValue = 'view-down'
-        this.current < this.componentsArr.length-1 ? this.current += 1 : null
+        this.current < this.componentsArr.length-1 ? this.current += 1 : null;
       } else {
         this.viewValue = 'view-up'
         this.current > 0 ? this.current -= 1 : null
@@ -104,14 +101,11 @@ body {
 #nav ul {
   top: 35%;
   position: absolute;
+  line-height: 0;
 }
 
 #nav ul li {
   list-style-type: none;
-  line-height: 0;
-}
-
-#nav ul li span {
   height: 40px;
   width: 80px;
   display: inline-block;
