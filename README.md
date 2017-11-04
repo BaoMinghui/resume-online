@@ -1,5 +1,7 @@
 # resume
 
+##[预览地址](https://baominghui.github.io/resume-online/)
+
 > A Vue.js project
 
 ## Build Setup
