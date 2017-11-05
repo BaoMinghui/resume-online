@@ -1,6 +1,7 @@
 <template>
 <div id="production">
   <h1>我的个人作品</h1>
+  <p>要是一开始就只选择自己能做得到的事情，那么什么都没办法开始</p>
   <div class="card">
     <div v-for="item in myPro">
       <p>{{item.title}}</p>
@@ -45,6 +46,12 @@ export default {
   font-weight: lighter;
   letter-spacing: .3em;
   margin-bottom: 1%;
+}
+
+#production p {
+  font-size: 1.1em;
+  line-height: 1.5em;
+  margin-bottom: 3%;
 }
 
 .card {

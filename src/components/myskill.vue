@@ -1,7 +1,7 @@
 <template>
 <div id="skill">
-  <h1>技能栈</h1>
-  <p>要是一开始就只选择自己能做得到的事情，那么什么都将不能开始</p>
+  <h1>技术栈</h1>
+  <p>工欲善其事，必先利其器</p>
   <div class="tag">
     <span v-for="tag in _skillTag" :style="{backgroundColor:getColor(),height:15+tag.value/2+'px',width:tag.value*1.8+'px',lineHeight:15+tag.value/2+'px',fontSize:tag.value/3+'px'}">{{tag.title}}</span>
   </div>
@@ -41,10 +41,10 @@ export default {
 				value:40
 			}],
       color: [
-        '#FF7C00', '#BF3D30', '#BF7630','#206876','#FFC440'
+        '#FF7C00', '#BF3D30', '#BF7630','#206876','#B0C7D1','#D4D392'
       ],
 			describe:[
-				'能够编写语义化的 HTML，完成较复杂的布局',
+				'能够编写语义化的HTML，完成较复杂的布局',
 				'熟悉原生js，能脱离jQuery等库编码',
 				'了解使用sass进行css预处理',
 				'了解模块化，面向对象编程',
@@ -54,12 +54,13 @@ export default {
   },
   methods: {
     getColor() {
-      return this.color[Math.floor(Math.random() * 5)]
+      return this.color[Math.floor(Math.random() * this.color.length)]
     }
   },
 	computed:{
 		_skillTag(){
-			return this.skillTag.sort(function(){ return 0.5 - Math.random() })
+      // let timer = setInterval(this.skillTag.sort(function(){ return 0.5 - Math.random() }),1000)
+      return this.skillTag.sort(function(){ return 0.5 - Math.random() });
 		}
 	}
 }
@@ -108,7 +109,7 @@ export default {
   margin: .4em;
   border-radius: 5%;
 	font-size: 1em;
-	color: #DEDEDE;
+	color: #454545;
 }
 
 
