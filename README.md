@@ -1,6 +1,6 @@
 # resume
 
-##[预览地址](https://baominghui.github.io/resume-online/)
+[预览地址](119.29.246.215/resume)
 
 > A Vue.js project
 
