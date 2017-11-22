@@ -1,8 +1,8 @@
 <template>
 	<div id="aboutme">
 		<h1>关于我</h1><br>
-		<p>有关咱在写bug这件事，还请务必保密</p>
-		<div class="msg">
+		<p>唯独咱在写bug这件事，请务必保密</p>
+		<div class="msg" :class="{phone:!isWidthEnough}">
 			<ul>
 				<li v-for="(value,key) in msg">{{key}} : {{value}}</li>
 			</ul>
@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import store from '@/store'
 	export default{
 		data(){
 			return{
@@ -24,8 +25,14 @@
 					邮箱:'var_bmh@outlook.com',
 				}
 			}
+		},
+		computed:{
+			isWidthEnough(){
+				return store.state.isWidthEnough
+			}
 		}
 	}
+
 </script>
 <style scoped>
   #aboutme{
@@ -33,7 +40,6 @@
   	width: 100%;
   	background-color: #8aa1ab;
   	position: absolute;
-		padding-top: 5%;
   }
 
 	#aboutme h1 {
@@ -53,6 +59,10 @@
 		font-size: 1.3em;
 		letter-spacing: .1em;
 		margin-left: 45%;
+	}
+
+	.phone {
+		margin-left: 20%;
 	}
 
 	.msg ul{

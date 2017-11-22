@@ -1,8 +1,25 @@
 <template>
 	<div id="contect">
 		<h1>务必联系在下</h1>
+		<div class="msg">
+			<p v-for="msg in msgs">{{ msg }}</p>
+		</div>
+		<a href="resume.pdf" download>点击下载我的简历</a><br>
+		<div class="finger">
+
+		</div>
 	</div>
 </template>
+
+<script type="text/javascript">
+	export default({
+		data(){
+			return{
+				msgs:['人不该在思考晚上吃什么的问题上浪费时间','要替自己的无能找借口太过简单','不拖延，不怠慢','选择有趣的未来']
+			}
+		}
+	})
+</script>
 
 <style scoped>
   #contect{
@@ -10,7 +27,6 @@
   	width: 100%;
   	background-color: #c9c88f;
   	position: absolute;
-		padding-top: 5%;
   }
 
 	#contect h1 {
@@ -18,5 +34,43 @@
 		font-weight: lighter;
 		letter-spacing: .3em;
 		margin-bottom: 1%;
+	}
+
+	.msg {
+		margin-top: 5%;
+		font-size: 1.3em;
+
+	}
+
+	#contect a{
+		margin-top: 5%;
+		display: inline-block;
+		width: 12em;
+		height: 2em;
+		color: #555;
+		text-decoration: none;
+		font-size: 1.5rem;
+	}
+
+	.finger {
+		background-image: url("./../assets/finger.svg");
+		background-size: contain;
+		width: 50px;
+		height: 50px;
+		display: inline-block;
+		animation: up 1s infinite;
+		margin-top: 10px;
+	}
+
+	@keyframes up{
+		0% {
+			transform: translateY(-20px);
+		}
+		50% {
+			transform: translateY(0px);
+		}
+		100% {
+			transform: translateY(-20px);
+		}
 	}
 </style>

@@ -2,7 +2,7 @@
 <div id="production">
   <h1>我的个人作品</h1>
   <p>要是一开始就只选择自己能做得到的事情，那么什么都没办法开始</p>
-  <div class="card">
+  <div class="card" :class="{phone:!isWidthEnough}">
     <div v-for="item in myPro">
       <p>{{item.title}}</p>
       <span>{{item.describe}}</span><br>
@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import store from '@/store'
 export default {
   name: 'production',
   data() {
@@ -24,8 +25,13 @@ export default {
       }, {
         title: "2048小游戏",
         describe: "用vue实现的2048",
-        url: ""
+        url: "https://github.com/BaoMinghui/vue-2048"
       }]
+    }
+  },
+  computed:{
+    isWidthEnough(){
+      return store.state.isWidthEnough
     }
   }
 }
@@ -37,7 +43,6 @@ export default {
   width: 100%;
   background-color: #D4D392;
   position: absolute;
-  padding-top: 5%;
 	text-align: center;
 }
 
@@ -67,9 +72,22 @@ export default {
   display: inline-block;
   border-radius: 5px;
   margin: 2%;
-	background-color: #8aa1ab;
+	background-color: #A2B98D;
 	padding: 10px;
-	box-shadow: 4px 4px 4px #666666;
+}
+
+.phone {
+  margin-left: 5%;
+}
+
+.phone div{
+  height: auto;
+  width: 250px;
+  display: inline-block;
+  border-radius: 5px;
+  margin: 2%;
+  background-color: #A2B98D;
+  padding: 10px;
 }
 
 .card div p {
@@ -79,5 +97,10 @@ export default {
 
 .card div span {
   font-size: 1em;
+}
+
+a{
+  text-decoration: none;
+  color: #000;
 }
 </style>

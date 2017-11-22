@@ -1,12 +1,8 @@
 <template>
 <div id="app">
-  <div id="nav">
-    <ul @click='eventAgency($event)'>
-      <li v-for="item in componentsArr" :class="item"></li>
-    </ul>
-  </div>
+  <sidemenu v-if="side"></sidemenu>
   <transition :name="viewValue">
-    <component :is="componentsArr[current]"></component>
+    <component :is="componentsArr[current]" :class="{wphone:!isWidthEnough,nophone:isWidthEnough}"></component>
   </transition>
 </div>
 </template>
@@ -16,6 +12,11 @@ import index from "@/components/index"
 import contact from "@/components/contactme"
 import skill from "@/components/myskill"
 import production from "@/components/production"
+import sidemenu from "@/components/sidemenu"
+
+import {
+  mapState
+} from 'vuex'
 
 export default {
   name: 'app',
@@ -24,47 +25,23 @@ export default {
     index,
     contact,
     production,
-    skill
+    skill,
+    sidemenu
   },
   data() {
     return {
-      current: 0,
-      componentsArr: [
-        'index',
-        'aboutme',
-        'skill',
-        'production',
-        'contact'
-      ],
-      viewValue: 'view-up'
+      side: true
     }
   },
 
+  computed:{
+    ...mapState([
+      'current',
+      'viewValue',
+      'componentsArr',
+      'isWidthEnough'
+    ])
 
-  methods: {
-    eventAgency: function(ev) {
-      const event = ev || window.event;
-      const target = ev.target || window.srcElement;
-      const index = this.componentsArr.indexOf(target.className);
-      if(index<this.current){
-        this.viewValue = 'view-up'
-      }else{
-        this.viewValue = 'view-down'
-      }
-      this.current = index
-    }
-  },
-
-  mounted() {
-    window.addEventListener('mousewheel', (event) => {
-      if (event.wheelDelta < 0) {
-        this.viewValue = 'view-down'
-        this.current < this.componentsArr.length-1 ? this.current += 1 : null;
-      } else {
-        this.viewValue = 'view-up'
-        this.current > 0 ? this.current -= 1 : null
-      }
-    })
   }
 }
 </script>
@@ -88,46 +65,12 @@ body {
   width: 100%;
 }
 
-#nav {
-  position: absolute;
-  height: 100%;
-  width: 80px;
-  background-color: #B8FFB8;
-  right: 0;
-  line-height: 60px;
-  z-index: 3;
+.nophone{
+  padding-top: 5%;
 }
 
-#nav ul {
-  top: 35%;
-  position: absolute;
-  line-height: 0;
-}
-
-#nav ul li {
-  list-style-type: none;
-  height: 40px;
-  width: 80px;
-  display: inline-block;
-}
-
-.index {
-  background-color: #B0C7D1;
-}
-
-.aboutme {
-  background-color: #8aa1ab;
-}
-
-.skill {
-  background-color: #E4E8EB;
-}
-
-.contact {
-  background-color: #c9c88f;
-}
-.production{
-  background-color: #D4D392;
+.wphone {
+  padding-top: 20%;
 }
 
 .view-up-enter-active {
