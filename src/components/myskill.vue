@@ -2,11 +2,13 @@
 <div id="skill">
   <h1>技术栈</h1>
   <p>工欲善其事，必先利其器</p>
-  <div class="tag" v-if="isWidthEnough">
-    <span v-for="tag in _skillTag" :style="{backgroundColor:getColor(),height:17+tag.value/2+'px',width:tag.value*1.8+'px',lineHeight:15+tag.value/2+'px',fontSize:tag.value/3+'px'}">{{tag.title}}</span>
-  </div>
-  <div class="describe" :class="{phone:!isWidthEnough}">
-    <p v-for='item in describe'>{{item}}</p>
+  <div class="main">
+    <div class="tag" v-if="isWidthEnough">
+      <span v-for="tag in _skillTag" :style="{backgroundColor:getColor(),height:17+tag.value/2+'px',width:tag.value*1.8+'px',lineHeight:15+tag.value/2+'px',fontSize:tag.value/3+'px'}">{{tag.title}}</span>
+    </div>
+    <div class="describe" :class="{phone:!isWidthEnough}">
+      <p v-for='item in describe'>{{item}}</p>
+    </div>
   </div>
 </div>
 </template>
@@ -45,11 +47,11 @@ export default {
         '#FFFB00', '#EEFF6B', '#B0FEFB', '#B3ADE9', '#84F168', '#24D197', '#FFB8B8', '#86E65A', '#A2B98D'
       ],
       describe: [
-        '能够编写语义化的HTML，完成较复杂的布局',
-        '熟悉原生js，能脱离jQuery等库编码',
+        '能够编写语义化的HTML，准确的还原设计稿',
+        '熟悉原生js，了解ES6语法，能脱离jQuery等库编码',
+        '了解Vue jQuery的使用',
         '了解使用sass进行css预处理',
-        '了解模块化，面向对象编程',
-        '了解Vue jQuery的使用'
+        '了解模块化，面向对象编程'
       ]
     }
   },
@@ -79,6 +81,10 @@ export default {
   width: 100%;
   background-color: #E4E8EB;
   position: absolute;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 #skill h1 {
@@ -94,21 +100,31 @@ export default {
   margin-bottom: 3%;
 }
 
+.main {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .tag {
   width: 25%;
-  position: relative;
   display: inline-block;
-  margin-right: 5%;
+  margin-right: 50px;
 }
 
 .describe {
   width: 30%;
   display: inline-block;
-  position: relative;
-  text-align: left;
   line-height: 1.5em;
   font-size: 1.1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-self: flex-start;
+  text-align: justify;
 }
+
 
 .phone {
   width: 80%;

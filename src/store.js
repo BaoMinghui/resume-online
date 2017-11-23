@@ -24,15 +24,19 @@ export default new Vuex.Store({
       state.viewValue = 'view-down'
     },
     current_up(state) {
-      state.current -= 1
+      if(state.current>0){
+        state.current -=1
+      }
     },
     current_down(state) {
-      state.current += 1
+      if(state.current<state.componentsArr.length-1){
+        state.current += 1
+      }
     },
     current_init(state,value){
       state.current = value;
     },
-    
+
     showSome(state,value){
       state.isWidthEnough = value
     },

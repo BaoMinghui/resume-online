@@ -13,7 +13,7 @@ import contact from "@/components/contactme"
 import skill from "@/components/myskill"
 import production from "@/components/production"
 import sidemenu from "@/components/sidemenu"
-
+import store from "@/store"
 import {
   mapState
 } from 'vuex'
@@ -41,7 +41,15 @@ export default {
       'componentsArr',
       'isWidthEnough'
     ])
+  },
 
+  methods:{
+    nextPage(){
+      if(this.current<this.componentsArr.length-1){
+        store.commit('current_down')
+        store.commit('viewValue_down')
+      }
+    }
   }
 }
 </script>
@@ -66,7 +74,7 @@ body {
 }
 
 .nophone{
-  padding-top: 5%;
+  padding-top: 10%;
 }
 
 .wphone {

@@ -40,6 +40,10 @@ import store from '@/store'
   	width: 100%;
   	background-color: #8aa1ab;
   	position: absolute;
+		display: flex;
+		display: -webkit-flex;
+		flex-direction: column;
+		justify-content: center;
   }
 
 	#aboutme h1 {
@@ -58,16 +62,23 @@ import store from '@/store'
 	.msg {
 		font-size: 1.3em;
 		letter-spacing: .1em;
-		margin-left: 45%;
+		flex-grow: 1;
 	}
 
 	.phone {
-		margin-left: 20%;
+		/*margin-left: 20%;*/
 	}
 
 	.msg ul{
 		list-style-type: none;
-		text-align: left;
 		line-height: 1.7em;
+		align-self: stretch;
+		display: flex;
+		display: -webkit-flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		text-align: left;
+		margin-left: 45%;
 	}
+
 </style>

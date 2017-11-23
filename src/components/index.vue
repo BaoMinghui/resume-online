@@ -39,8 +39,11 @@ export default {
   width: 100%;
   background-color: #B0C7D1;
   position: absolute;
-  text-align: center;
   padding-top: 15%;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  flex-wrap: nowrap;
 }
 
 .right,
@@ -51,13 +54,13 @@ export default {
 
 .left {
   border-right: 3px solid;
-  animation: show .9s;
+  animation: show 2s;
   width: 20%;
 }
 
 .right {
   font-size: 2em;
-  width: 20%;
+  width: 40%;
   padding-top: 8%;
 }
 

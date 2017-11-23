@@ -20,11 +20,11 @@ export default {
     return {
       myPro: [{
         title: "个人在线简历",
-        describe: "一款基于vue的个性在线简历",
+        describe: "一款基于vue的个性在线简历,采用flex布局以及利用vuex进行组件间的数据交互",
         url: "https://github.com/BaoMinghui/resume-online"
       }, {
         title: "2048小游戏",
-        describe: "用vue实现的2048",
+        describe: "用vue实现的2048,基于vue的响应式和数据驱动特性，大大降低了书写成本",
         url: "https://github.com/BaoMinghui/vue-2048"
       }]
     }
@@ -43,7 +43,10 @@ export default {
   width: 100%;
   background-color: #D4D392;
   position: absolute;
-	text-align: center;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 #production h1 {
@@ -60,10 +63,12 @@ export default {
 }
 
 .card {
-  width: 50%;
-	height: 50%;
   padding-top: 5%;
-	margin-left: 25%;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .card div {

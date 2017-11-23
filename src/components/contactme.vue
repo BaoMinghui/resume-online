@@ -5,9 +5,7 @@
 			<p v-for="msg in msgs">{{ msg }}</p>
 		</div>
 		<a href="resume.pdf" download>点击下载我的简历</a><br>
-		<div class="finger">
-
-		</div>
+		<div class="finger"></div>
 	</div>
 </template>
 
@@ -15,7 +13,7 @@
 	export default({
 		data(){
 			return{
-				msgs:['人不该在思考晚上吃什么的问题上浪费时间','要替自己的无能找借口太过简单','不拖延，不怠慢','选择有趣的未来']
+				msgs:['与其感慨路难行，不如马上出发']
 			}
 		}
 	})
@@ -39,7 +37,6 @@
 	.msg {
 		margin-top: 5%;
 		font-size: 1.3em;
-
 	}
 
 	#contect a{
@@ -54,7 +51,7 @@
 
 	.finger {
 		background-image: url("./../assets/finger.svg");
-		background-size: contain;
+		background-size: cover;
 		width: 50px;
 		height: 50px;
 		display: inline-block;
