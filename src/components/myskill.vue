@@ -20,16 +20,16 @@ export default {
     return {
       skillTag: [{
         title: 'html',
-        value: 65
+        value: 60
       }, {
         title: 'css',
-        value: 65
+        value: 60
       }, {
         title: 'javascript',
         value: 65
       }, {
         title: 'vue.js',
-        value: 50
+        value: 55
       }, {
         title: 'jquery',
         value: 50

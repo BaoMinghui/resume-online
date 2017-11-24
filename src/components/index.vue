@@ -1,8 +1,5 @@
 <template>
 <div id="index">
-  <div class="left" v-if="isWidthEnough">
-    <p v-text='left'></p>
-  </div>
   <div class="right" :class="{phone:!isWidthEnough}">
     <p v-for='item in right'>{{item}}</p>
   </div>
@@ -16,6 +13,8 @@ export default {
     return {
       left: '',
       right: [
+        '',
+        '',
         '包明辉',
         '前端工程师'
       ]
@@ -46,22 +45,13 @@ export default {
   flex-wrap: nowrap;
 }
 
-.right,
-.left {
+.right {
   display: inline-block;
   height: 30%;
-}
-
-.left {
-  border-right: 3px solid;
-  animation: show 2s;
-  width: 20%;
-}
-
-.right {
   font-size: 2em;
   width: 40%;
-  padding-top: 8%;
+  animation: show 2s;
+  border-left: 3px solid;
 }
 
 @keyframes show {
@@ -78,18 +68,15 @@ export default {
   margin-top: 30%;
 }
 
-.left p {
-  text-align: left;
-  line-height: 1.5em;
-  font-size: 1.5em;
-  width: 80%;
-  word-break: break-word;
-}
 
 .right p {
   text-indent: 1em;
   display: block;
   text-align: left;
   line-height: 50px;
+}
+
+.right p:first-child{
+  margin-top: 18%;
 }
 </style>

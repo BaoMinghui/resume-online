@@ -4,7 +4,7 @@
 		<div class="msg">
 			<p v-for="msg in msgs">{{ msg }}</p>
 		</div>
-		<a href="resume.pdf" download>点击下载我的简历</a><br>
+		<a href="resume.pdf" download="包明辉.pdf">点击下载我的简历</a><br>
 		<div class="finger"></div>
 	</div>
 </template>
@@ -40,7 +40,7 @@
 	}
 
 	#contect a{
-		margin-top: 5%;
+		margin-top: 10%;
 		display: inline-block;
 		width: 12em;
 		height: 2em;

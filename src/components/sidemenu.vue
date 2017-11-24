@@ -2,7 +2,14 @@
 <div>
   <div id="nav" v-show='isWidthEnough'>
     <ul @click='eventAgency($event)'>
-      <li v-for="item in componentsArr" :class="item"> <span></span> </li>
+      <li v-for="item in componentsArr"
+      :class="item" ref="item"
+      @mouseenter="spanShow[item]=true"
+      @mouseleave="spanShow[item]=false">
+        <transition name="tag">
+          <span v-show="spanShow[item]">{{cpnTitle[item]}}</span>
+        </transition>
+      </li>
     </ul>
   </div>
   <div class="btn">
@@ -22,6 +29,24 @@ import {
 
 export default {
   name: 'sidemenu',
+  data(){
+    return{
+      cpnTitle:{
+        index:'首页',
+        aboutme:'关于我',
+        skill:'技术栈',
+        production:'个人作品',
+        contact:'联系我'
+      },
+      spanShow:{
+        index:false,
+        aboutme:false,
+        skill:false,
+        production:false,
+        contact:false
+      }
+    }
+  },
   computed: {
     ...mapState([
       'current',
@@ -40,12 +65,14 @@ export default {
       const event = ev || window.event;
       const target = ev.target || window.srcElement;
       const index = this.componentsArr.indexOf(target.className);
-      if (index < this.current) {
-        store.commit('viewValue_up')
-      } else {
-        store.commit('viewValue_down')
+      if(index>=0){
+        if (index < this.current) {
+          store.commit('viewValue_up')
+        } else {
+          store.commit('viewValue_down')
+        }
+        store.commit('current_init', index)
       }
-      store.commit('current_init', index)
     },
     current_up() {
       store.commit('current_up');
@@ -54,10 +81,14 @@ export default {
     current_down() {
       store.commit('current_down');
       store.commit('viewValue_down');
-
     }
   },
 
+  watch:{
+    current:function(val,oldval){
+
+    }
+  },
   mounted() {
     let mousewheelevt = (/Firefox/i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel";
     window.addEventListener(mousewheelevt, (event) => {
@@ -82,12 +113,13 @@ export default {
 
 
     window.addEventListener('resize', () => {
-      if (window.innerWidth > 929 && this.isWidthEnough === false) {
+      if (window.innerWidth > 768 && this.isWidthEnough === false) {
         store.commit('showSome', true)
-      } else if (window.innerWidth <= 929 && this.isWidthEnough === true) {
+      } else if (window.innerWidth <= 768 && this.isWidthEnough === true) {
         store.commit('showSome', false)
       }
-    })
+    });
+
   }
 }
 </script>
@@ -115,6 +147,35 @@ export default {
   width: 13px;
   height: 13px;
   margin-bottom: 20px;
+  opacity: 0.3;
+  cursor: pointer;
+}
+
+span {
+  display: inline-block;
+  position: absolute;
+  height: 30px;
+  width: 100px;
+  float: left;
+  background-color: #666;
+  color: #eee;
+  line-height: 30px;
+  margin-left: -120px;
+  margin-top: -10px;
+  border-radius: 5px 0 0 5px;
+}
+
+span:after{
+  content: '';
+  display: inline-block;
+  height: 0;
+  width: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 12px solid #666;
+  position: absolute;
+  left: 100px;
+  top: 5px;
 }
 
 .index {
@@ -126,7 +187,7 @@ export default {
 }
 
 .skill {
-background-image: url(./../assets/skill.svg);
+  background-image: url(./../assets/skill.svg);
 }
 
 .contact {
@@ -146,6 +207,7 @@ background-image: url(./../assets/skill.svg);
   position: absolute;
   z-index: 555;
 }
+
 .up{
   background-image: url(./../assets/up.svg);
   background-size: cover;
@@ -158,6 +220,14 @@ background-image: url(./../assets/skill.svg);
   background-size: cover;
   top: 90%;
   animation: downdown 2s infinite ;
+}
+
+.tag-enter-active {
+  animation: tagshow .2s;
+}
+
+.tag-leave-active {
+  animation: tagshow .2s reverse;
 }
 
 @keyframes upup {
@@ -181,6 +251,18 @@ background-image: url(./../assets/skill.svg);
   100%{
     transform: translateY(30px);
     opacity: 0;
+  }
+}
+
+@keyframes tagshow {
+  0% {
+    transform: translateX(-20px);
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 </style>

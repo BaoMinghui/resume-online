@@ -2,7 +2,7 @@
 	<div id="aboutme">
 		<h1>关于我</h1><br>
 		<p>唯独咱在写bug这件事，请务必保密</p>
-		<div class="msg" :class="{phone:!isWidthEnough}">
+		<div class="msg" :class="{phone:!isWidthEnough,pc:isWidthEnough}">
 			<ul>
 				<li v-for="(value,key) in msg">{{key}} : {{value}}</li>
 			</ul>
@@ -65,20 +65,26 @@ import store from '@/store'
 		flex-grow: 1;
 	}
 
-	.phone {
-		/*margin-left: 20%;*/
-	}
-
 	.msg ul{
 		list-style-type: none;
 		line-height: 1.7em;
-		align-self: stretch;
-		display: flex;
-		display: -webkit-flex;
-		flex-direction: column;
-		justify-content: flex-start;
 		text-align: left;
-		margin-left: 45%;
+	}
+
+	.pc::before {
+		content: '';
+		display: inline-block;
+		float: left;
+		width: 45%;
+		height: 400px;
+	}
+
+	.phone::before {
+		content: '';
+		display: inline-block;
+		float: left;
+		width: 130px;
+		height: 300px;
 	}
 
 </style>
