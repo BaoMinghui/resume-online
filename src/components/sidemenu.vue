@@ -29,21 +29,21 @@ import {
 
 export default {
   name: 'sidemenu',
-  data(){
-    return{
-      cpnTitle:{
-        index:'首页',
-        aboutme:'关于我',
-        skill:'技术栈',
-        production:'个人作品',
-        contact:'联系我'
+  data() {
+    return {
+      cpnTitle: {
+        index: '首页',
+        aboutme: '关于我',
+        skill: '技术栈',
+        production: '个人作品',
+        contact: '联系我'
       },
-      spanShow:{
-        index:false,
-        aboutme:false,
-        skill:false,
-        production:false,
-        contact:false
+      spanShow: {
+        index: false,
+        aboutme: false,
+        skill: false,
+        production: false,
+        contact: false
       }
     }
   },
@@ -65,7 +65,7 @@ export default {
       const event = ev || window.event;
       const target = ev.target || window.srcElement;
       const index = this.componentsArr.indexOf(target.className);
-      if(index>=0){
+      if (index >= 0) {
         if (index < this.current) {
           store.commit('viewValue_up')
         } else {
@@ -84,13 +84,51 @@ export default {
     }
   },
 
-  watch:{
-    current:function(val,oldval){
+  watch: {
+    current: function(val, oldval) {
 
     }
   },
   mounted() {
     let mousewheelevt = (/Firefox/i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel";
+
+    // //节流函数
+    // const throttle = (fun, delay, time) => {
+    //   let timeout,
+    //     startTime = new Date();
+    //   return () => {
+    //     let context = this,
+    //       args = arguments,
+    //       curTime = new Date();
+    //     clearTimeout(timeout);
+    //     if (curTime - startTime >= time) {
+    //       fun.apply(context, args);
+    //       startTime = curTime;
+    //     } else {
+    //       timeout = setTimeout(fun, delay);
+    //     }
+    //   }
+    // }
+    //
+    // const pageGo = (event) => {
+    //   if (event.wheelDelta) {
+    //     if (event.wheelDelta < 0) {
+    //       store.commit('viewValue_down')
+    //       store.commit('current_down');
+    //     } else {
+    //       store.commit('viewValue_up')
+    //       store.commit('current_up')
+    //     }
+    //   } else if (event.detail) {
+    //     if (event.detail > 0) {
+    //       store.commit('viewValue_down')
+    //       store.commit('current_down')
+    //     } else {
+    //       store.commit('viewValue_up')
+    //       store.commit('current_up')
+    //   }
+    // }
+
     window.addEventListener(mousewheelevt, (event) => {
       if (event.wheelDelta) {
         if (event.wheelDelta < 0) {
@@ -111,6 +149,10 @@ export default {
       }
     });
 
+    if (window.innerWidth <= 768) {
+      store.commit('showSome', false)
+    }
+
 
     window.addEventListener('resize', () => {
       if (window.innerWidth > 768 && this.isWidthEnough === false) {
@@ -119,6 +161,7 @@ export default {
         store.commit('showSome', false)
       }
     });
+
 
   }
 }

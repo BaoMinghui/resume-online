@@ -35,6 +35,11 @@ import store from '@/store'
 
 </script>
 <style scoped>
+	@media screen and (max-width: 900px) {
+    .msg {
+        transform: scale(0.9,0.9);
+    }
+	}
   #aboutme{
   	height: 100%;
   	width: 100%;
@@ -83,7 +88,7 @@ import store from '@/store'
 		content: '';
 		display: inline-block;
 		float: left;
-		width: 130px;
+		width: 70px;
 		height: 300px;
 	}
 
