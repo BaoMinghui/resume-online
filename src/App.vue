@@ -73,6 +73,7 @@ body {
   width: 100%;
 }
 
+
 .nophone{
   padding-top: 10%;
 }

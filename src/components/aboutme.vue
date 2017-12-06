@@ -35,11 +35,7 @@ import store from '@/store'
 
 </script>
 <style scoped>
-	@media screen and (max-width: 900px) {
-    .msg {
-        transform: scale(0.9,0.9);
-    }
-	}
+
   #aboutme{
   	height: 100%;
   	width: 100%;
@@ -52,9 +48,9 @@ import store from '@/store'
   }
 
 	#aboutme h1 {
-		font-size: 2.5em;
+		font-size: 3rem;
 		font-weight: lighter;
-		letter-spacing: .3em;
+		letter-spacing: .3rem;
 		margin-bottom: 1%;
 	}
 
@@ -65,8 +61,8 @@ import store from '@/store'
 	}
 
 	.msg {
-		font-size: 1.3em;
-		letter-spacing: .1em;
+		font-size: 1.5rem;
+		letter-spacing: .1rem;
 		flex-grow: 1;
 	}
 
@@ -92,4 +88,9 @@ import store from '@/store'
 		height: 300px;
 	}
 
+	@media only screen and (max-width:900px) {
+		.msg {
+			margin-left: 80px;
+		}
+	}
 </style>

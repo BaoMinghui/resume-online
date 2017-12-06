@@ -20,13 +20,13 @@ export default {
     return {
       skillTag: [{
         title: 'html',
-        value: 60
+        value: 70
       }, {
         title: 'css',
-        value: 60
+        value: 70
       }, {
         title: 'javascript',
-        value: 65
+        value: 75
       }, {
         title: 'vue.js',
         value: 55
@@ -137,5 +137,11 @@ export default {
   border-radius: 5%;
   font-size: 1em;
   color: #454545;
+}
+
+@media only screen and (max-width:1600px) {
+  .tag span {
+    transform: scale(1.3,1.3);
+  }
 }
 </style>

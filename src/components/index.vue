@@ -12,6 +12,7 @@ export default {
     return {
       content: [
         '不要停止奔跑，不要回顾来路，来路无可眷恋，值得期待的只有前方',
+        '',
         '我叫包明辉',
         '一名前端工程师'
       ],
@@ -27,8 +28,7 @@ export default {
       let time = 100;
       for(let i=0;i<this.content.length;i++){
         let arr = this.content[i].split('');
-        arr.push("<br>")
-        console.log(arr);
+        arr.push("<br>");
         for(let j=0;j<arr.length;j++){
           setTimeout(()=>{
             this.inner += arr[j];
@@ -42,13 +42,6 @@ export default {
 * {
   margin: 0;
   padding: 0;
-}
-
-@media screen and (max-width: 900px) {
-    .right {
-        /*transform: scale(0.6,0.6);*/
-        font-size: 1.6em;
-    }
 }
 
 #index {
@@ -65,8 +58,8 @@ export default {
 
 .right {
   display: inline-block;
-  height: 30%;
-  font-size: 1.5em;
+  height: 15.3rem;
+  font-size: 1.7rem;
   width: 40%;
   animation: show 2s;
   border-left: 3px solid;
@@ -75,12 +68,18 @@ export default {
   padding-left: 1em;
 }
 
+@media only screen and (max-width: 900px) {
+    .right {
+        font-size: 1.2rem;
+    }
+}
+
 @keyframes show {
   from {
-    height: 0
+    height: 0rem
   }
   to {
-    height:30%
+    height:15.3rem
   }
 }
 
