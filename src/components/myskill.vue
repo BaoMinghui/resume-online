@@ -32,7 +32,7 @@ export default {
         value: 55
       }, {
         title: 'jquery',
-        value: 50
+        value: 40
       }, {
         title: 'webpack',
         value: 50
@@ -42,6 +42,12 @@ export default {
       }, {
         title: 'sass',
         value: 40
+      },{
+        title:'koa',
+        value:40
+      },{
+        title:'mongoDB',
+        value:30
       }],
       color: [
         '#FFFB00', '#EEFF6B', '#B0FEFB', '#B3ADE9', '#84F168', '#24D197', '#FFB8B8', '#86E65A', '#A2B98D'

@@ -24,7 +24,7 @@ export default new Vuex.Store({
       state.viewValue = 'view-down'
     },
     current_up(state) {
-      if(state.current>0){
+      if(state.current>0){ 
         state.current -=1
       }
     },

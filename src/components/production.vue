@@ -30,6 +30,11 @@ export default {
         url: "https://github.com/BaoMinghui/resume-online",
         isHv: false
       }, {
+        title:"本地视频管理系统",
+        describe:"一款后台基于Koa，mongoDB的本地视频管理系统，前端采用了elementUI",
+        url:'https://github.com/BaoMinghui/localVideo',
+        isHv:false
+      },{
         title: "2048小游戏",
         describe: "用vue实现的2048,基于vue的响应式和数据驱动特性，大大降低了书写成本",
         url: "https://github.com/BaoMinghui/vue-2048",
