@@ -1,18 +1,16 @@
 <template>
 <div id="production">
-  <h1>我的个人作品</h1>
+  <h1>我的项目经历</h1>
   <p>要是一开始就只选择自己能做得到的事情，那么什么都没办法开始</p>
   <div class="cards" :class="{phone:!isWidthEnough}"
     >
     <div v-for="(item,index) in myPro"
     :data-id='index'
-    :class="{'big':item.isHv}"
-    @mouseenter="eMouseEnter($event)"
-    @mouseleave="eMouseLeave($event)"
+    :key="index"
+    class="hoverBig"
     >
       <p>{{item.title}}</p>
-      <span>{{item.describe}}</span><br>
-      <span><a :href="item.url">项目地址</a></span>
+      <span>{{item.describe}}</span>
     </div>
   </div>
 </div>
@@ -25,20 +23,16 @@ export default {
   data() {
     return {
       myPro: [{
-        title: "个人在线简历",
-        describe: "一款基于vue的个性在线简历,采用flex布局以及利用vuex进行组件间的数据交互",
-        url: "https://github.com/BaoMinghui/resume-online",
-        isHv: false
+        title: "中石油微信公众号车主服务",
+        describe: "技术栈为vue全家桶 + vant，利用微信JSSDK实现了登录、支付等功能，并实现了基于百度地图的路线规划等功能",
+        isHv: true
       }, {
-        title:"本地视频管理系统",
-        describe:"一款后台基于Koa，mongoDB的本地视频管理系统，前端采用了elementUI",
-        url:'https://github.com/BaoMinghui/localVideo',
+        title:"智慧石油后台管理系统",
+        describe:"主要技术栈为vue全家桶+element-ui的项目后台管理系统，基于echarts实现了大量数据综示图表，共包含30+页面，封装了数个基于element组件的功能模块，基于动态注册路由实现了根据账号权限动态生成菜单的功能",
         isHv:false
-      },{
-        title: "2048小游戏",
-        describe: "用vue实现的2048,基于vue的响应式和数据驱动特性，大大降低了书写成本",
-        url: "https://github.com/BaoMinghui/vue-2048",
-        isHv: false
+      }, {
+        title: "乾坤擂台（微信小程序）",
+        describe: "一款算命相关的小程序（因内容审查未上架）"
       }],
     }
   },
@@ -46,21 +40,7 @@ export default {
     isWidthEnough(){
       return store.state.isWidthEnough
     }
-  },
-  methods:{
-    eMouseEnter(e){
-      let target = e.target;
-      let i = target.getAttribute("data-id");
-      if(i){
-        this.myPro[i].isHv = true
-      }
-    },
-    eMouseLeave(e){
-        for(let j=0;j<this.myPro.length;j+=1){
-          this.myPro[j].isHv = false
-      }
-    }
-  },
+  }
 }
 </script>
 
@@ -109,7 +89,7 @@ export default {
   transition: all .3s;
 }
 
-.big{
+.hoverBig:hover{
   transform: scale(1.05,1.05);
 }
 

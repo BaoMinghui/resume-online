@@ -22,21 +22,19 @@
 </template>
 
 <script>
-import store from '@/store'
-import {
-  mapState
-} from 'vuex'
+import store from "@/store";
+import { mapState } from "vuex";
 
 export default {
-  name: 'sidemenu',
+  name: "sidemenu",
   data() {
     return {
       cpnTitle: {
-        index: '首页',
-        aboutme: '关于我',
-        skill: '技术栈',
-        production: '个人作品',
-        contact: '联系我'
+        index: "首页",
+        aboutme: "关于我",
+        skill: "技术栈",
+        production: "个人作品",
+        contact: "联系我"
       },
       spanShow: {
         index: false,
@@ -45,19 +43,15 @@ export default {
         production: false,
         contact: false
       }
-    }
+    };
   },
   computed: {
-    ...mapState([
-      'current',
-      'componentsArr',
-      'isWidthEnough'
-    ]),
+    ...mapState(["current", "componentsArr", "isWidthEnough"]),
     showUp() {
-      return this.current !== 0
+      return this.current !== 0;
     },
     showDown() {
-      return this.current !== this.componentsArr.length - 1
+      return this.current !== this.componentsArr.length - 1;
     }
   },
   methods: {
@@ -67,30 +61,30 @@ export default {
       const index = this.componentsArr.indexOf(target.className);
       if (index >= 0) {
         if (index < this.current) {
-          store.commit('viewValue_up')
+          store.commit("viewValue_up");
         } else {
-          store.commit('viewValue_down')
+          store.commit("viewValue_down");
         }
-        store.commit('current_init', index)
+        store.commit("current_init", index);
       }
     },
     current_up() {
-      store.commit('current_up');
-      store.commit('viewValue_up');
+      store.commit("current_up");
+      store.commit("viewValue_up");
     },
     current_down() {
-      store.commit('current_down');
-      store.commit('viewValue_down');
+      store.commit("current_down");
+      store.commit("viewValue_down");
     }
   },
 
   watch: {
-    current: function(val, oldval) {
-
-    }
+    current: function(val, oldval) {}
   },
   mounted() {
-    let mousewheelevt = (/Firefox/i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel";
+    let mousewheelevt = /Firefox/i.test(navigator.userAgent)
+      ? "DOMMouseScroll"
+      : "mousewheel";
 
     // //节流函数
     // const throttle = (fun, delay, time) => {
@@ -129,42 +123,39 @@ export default {
     //   }
     // }
 
-    window.addEventListener(mousewheelevt, (event) => {
+    window.addEventListener(mousewheelevt, event => {
       if (event.wheelDelta) {
         if (event.wheelDelta < 0) {
-          store.commit('viewValue_down')
-          store.commit('current_down');
+          store.commit("viewValue_down");
+          store.commit("current_down");
         } else {
-          store.commit('viewValue_up')
-          store.commit('current_up')
+          store.commit("viewValue_up");
+          store.commit("current_up");
         }
       } else if (event.detail) {
         if (event.detail > 0) {
-          store.commit('viewValue_down')
-          store.commit('current_down')
+          store.commit("viewValue_down");
+          store.commit("current_down");
         } else {
-          store.commit('viewValue_up')
-          store.commit('current_up')
+          store.commit("viewValue_up");
+          store.commit("current_up");
         }
       }
     });
 
     if (window.innerWidth <= 768) {
-      store.commit('showSome', false)
+      store.commit("showSome", false);
     }
 
-
-    window.addEventListener('resize', () => {
+    window.addEventListener("resize", () => {
       if (window.innerWidth > 768 && this.isWidthEnough === false) {
-        store.commit('showSome', true)
+        store.commit("showSome", true);
       } else if (window.innerWidth <= 768 && this.isWidthEnough === true) {
-        store.commit('showSome', false)
+        store.commit("showSome", false);
       }
     });
-
-
   }
-}
+};
 </script>
 
 <style lang="css" scoped>
@@ -208,8 +199,8 @@ span {
   border-radius: 5px 0 0 5px;
 }
 
-span:after{
-  content: '';
+span:after {
+  content: "";
   display: inline-block;
   height: 0;
   width: 0;
@@ -236,47 +227,47 @@ span:after{
 .contact {
   background-image: url(./../assets/contect.svg);
 }
-.production{
+.production {
   background-image: url(./../assets/project.svg);
 }
 
-.btn{
+.btn {
   margin-left: 49%;
 }
 
-.btn div{
-  width:30px;
+.btn div {
+  width: 30px;
   height: 30px;
   position: absolute;
   z-index: 555;
 }
 
-.up{
+.up {
   background-image: url(./../assets/up.svg);
   background-size: cover;
   top: 2%;
-  animation: upup 2s infinite ;
+  animation: upup 2s infinite;
 }
 
-.down{
+.down {
   background-image: url(./../assets/down.svg);
   background-size: cover;
   top: 90%;
-  animation: downdown 2s infinite ;
+  animation: downdown 2s infinite;
 }
 
 .tag-enter-active {
-  animation: tagshow .2s;
+  animation: tagshow 0.2s;
 }
 
 .tag-leave-active {
-  animation: tagshow .2s reverse;
+  animation: tagshow 0.2s reverse;
 }
 
 @keyframes upup {
   0% {
     transform: translateY(20px);
-    opacity: .7;
+    opacity: 0.7;
   }
 
   100% {
@@ -286,12 +277,12 @@ span:after{
 }
 
 @keyframes downdown {
-  0%{
+  0% {
     transform: translateY(10px);
-    opacity: .7;
+    opacity: 0.7;
   }
 
-  100%{
+  100% {
     transform: translateY(30px);
     opacity: 0;
   }
